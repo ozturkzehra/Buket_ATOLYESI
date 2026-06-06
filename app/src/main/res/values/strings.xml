@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">canimUygulamam</string>
+    <string name="Ad">Kullanıcı Adı</string>
+    <string name="Dogumtarihi">Doğum Tarihi</string>
+    <string name="Eposta">Eposta</string>
+    <string name="Sifre">Sifre</string>
+    <string name="Kayıt">Kayıt Ol</string>
+    <string name="Seçenek">Zaten bir hesabınız var mı?</string>
+    <string name="Girisyap">Giriş yap</string>
+    <string name="ko_t1">Merhaba!</string>
+    <string name="ko_t2">Hesap Oluştur</string>
+    <string name="bloomland">Buket Diyarı</string>
+    <string name="metin1">Bilgilerini Girerek Kayıt Ol </string>
+    <string name="metin2">Hayalindeki Buketleri \nYapay Zekadan yardım alarak tasarla</string>
+    <string name="default_web_client_id">668700144711-5d07e9ep6uln14h7jfr22ufo5c9k2f0r.apps.googleusercontent.com</string>
+
+
+</resources>

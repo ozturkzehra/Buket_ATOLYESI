@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "668700144711",
+    "project_id": "flowerapp-c6cd5",
+    "storage_bucket": "flowerapp-c6cd5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668700144711:android:4412a2bf0891e6eda3ed62",
+        "android_client_info": {
+          "package_name": "com.example.canimuygulamam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668700144711-clg49lp3i8mp59m6qp7n7lre6j07cr2p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.canimuygulamam",
+            "certificate_hash": "37f4dc1196e47742a58d3f9be11e31f9e50d9a58"
+          }
+        },
+        {
+          "client_id": "668700144711-5d07e9ep6uln14h7jfr22ufo5c9k2f0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG6Nq1Vf2smH9BtyJoXpa-2u8VOiP-lG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668700144711-5d07e9ep6uln14h7jfr22ufo5c9k2f0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

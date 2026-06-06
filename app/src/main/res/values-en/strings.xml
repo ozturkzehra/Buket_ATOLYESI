@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">canimUygulamam</string>
+    <string name="Ad">Userame</string>
+    <string name="Dogumtarihi">Birth Date</string>
+    <string name="Eposta">Gmail</string>
+    <string name="Sifre">Password</string>
+    <string name="Kayıt">Sign Up</string>
+    <string name="Seçenek">Already have an account?</string>
+    <string name="Girisyap">Sign In "</string>
+    <string name="ko_t1">Hello!"</string>
+    <string name="ko_t2">Create an account!"</string>
+    <string name="bloomland">Bouquet\nLand</string>
+    <string name="metin1">Sign Up by Entering Your Information </string>
+    <string name="metin2">Design the Bouquets of Your Dreams
+with the help of Artificial Intelligence</string>
+    <string name="default_web_client_id">668700144711-5d07e9ep6uln14h7jfr22ufo5c9k2f0r.apps.googleusercontent.com</string>
+
+</resources>

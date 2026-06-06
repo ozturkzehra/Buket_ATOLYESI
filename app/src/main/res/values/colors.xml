@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Çiçek Uygulaması Renk Paleti -->
+    <color name="mist">#F4F3F1</color>      <!-- Arka planlar için ideal -->
+    <color name="peony">#997476</color>     <!-- Yumuşak vurgular, kartlar için -->
+    <color name="mauve">#E8BFC2</color>     <!-- İkincil butonlar veya ikonlar -->
+    <color name="sage">#829672</color>      <!-- Doğal yeşil dokunuşlar -->
+    <color name="evergreen">#3D4835</color> <!-- Ana butonlar ve önemli metinler -->
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#FFFFFF</color>
+
+</resources>

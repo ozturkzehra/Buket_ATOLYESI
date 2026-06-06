@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CanimUygulamam" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- En baskın renk-->
+        <item name="colorPrimary">@color/evergreen</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- En baskın renk  -->
+        <item name="colorSecondary">@color/sage</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Uygulamanın genel arka plan rengi -->
+
+        <!-- Kartların ve yüzeylerin rengi -->
+        <item name="colorSurface">@color/mist</item>
+        <item name="colorOnSurface">@color/evergreen</item> <!-- Yüzey üzerindeki yazı rengi -->
+
+        <!-- Durum çubuğu (Telefonun üst kısmı) -->
+        <item name="android:statusBarColor">@color/evergreen</item>
+
+        <!-- Arka plan rengi için -->
+        <item name="android:windowBackground">@color/mist</item>
+    </style>
+
+    <style name="Theme.CanimUygulamam" parent="Base.Theme.CanimUygulamam" />
+</resources>
