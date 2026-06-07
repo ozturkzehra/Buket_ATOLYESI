@@ -35,7 +35,7 @@ class SepetActivity : AppCompatActivity() {
 
     // =========================================================================
     // Apı keyimi ekledim
-    private val GEMINI_API_KEY = "AQ.Ab8RN6IGFKn-dYFby3rVbuvlo-oCMdN35EfkmH339gro8DSB_w"
+    private val GEMINI_API_KEY = "AQ.Ab8RN6K6xXiAhSX6hkVvQtJwZTvyoTK5V8WTyfXNeCn66AUHNg"
     // =========================================================================
 
     private lateinit var adapter: SepetAdapter
@@ -119,7 +119,7 @@ class SepetActivity : AppCompatActivity() {
     }
 
     //sepetim kendini yeniliyor
-   // Bu fonksiyon sepetin durumuna göre
+    // Bu fonksiyon sepetin durumuna göre
     //ekranı anlık olarak değiştirir.
     //Eğer sepet boşsa listeyi gizleyip
     //"Sepetiniz boş" yazısını (txtBos) açar ve yapay zeka butonunu kilitler
@@ -185,7 +185,7 @@ Türkçe yaz, samimi ve şiirsel bir dil kullan.
 
     private fun callGeminiAPI(prompt: String): String {
         // En kararlı v1 ana sürüm endpoint'ine yönlendirildi
-        val url = URL("https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY")
+        val url = URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AQ.Ab8RN6K6xXiAhSX6hkVvQtJwZTvyoTK5V8WTyfXNeCn66AUHNg")
         val conn = url.openConnection() as HttpURLConnection
         conn.requestMethod = "POST"
         conn.setRequestProperty("Content-Type", "application/json")

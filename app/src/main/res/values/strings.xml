@@ -13,6 +13,16 @@
     <string name="metin1">Bilgilerini Girerek Kayıt Ol </string>
     <string name="metin2">Hayalindeki Buketleri \nYapay Zekadan yardım alarak tasarla</string>
     <string name="default_web_client_id">668700144711-5d07e9ep6uln14h7jfr22ufo5c9k2f0r.apps.googleusercontent.com</string>
+    <string name="sepetim">Sepetim</string>
+    <string name="sepetiniz_bos_ncicekler_sekmesinden_urun_ekleyin">Sepetiniz bos.\nCicekler sekmesinden urun ekleyin</string>
+    <string name="toplam_0_tl">Toplam: 0 TL</string>
+    <string name="sepeti_bosalt">Sepeti Boşalt</string>
+    <string name="ai_ile_buket_aciklamasi_olustur">AI ile Buket Aciklamasi Olustur</string>
+    <string name="buketinizi_nasil_hayal_ediyorsunuz">Buketinizi nasil hayal ediyorsunuz?</string>
+    <string name="rn_romantik_bir_sevgililer_g_n_buketi_i_ekler_mor_ve_pembe_tonlarda_olsun">Örn: Romantik bir sevgililer günü buketi, çiçekler mor ve pembe tonlarda olsun...</string>
+    <string name="buket_aciklamasi_olustur">Buket Aciklamasi Olustur</string>
+    <string name="ai_buket_aciklamasi">AI Buket Aciklamasi</string>
+    <string name="yapay_zeka_taraf_ndan_olu_turulan_buket_g_rseli">Yapay zeka tarafından oluşturulan buket görseli</string>
 
 
 </resources>
