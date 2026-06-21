@@ -136,7 +136,7 @@ fun ProfessionalSepetCard(item: CartItem, onDelete: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Buketteki ilk çiçeğin görselini kart kapak resmi olarak gösteriyoruz
-            val ilkCicekGorseli = item.flowerList.firstOrNull()?.first?.imageRes ?: R.drawable.cicek1
+            val ilkCicekGorseli = item.flowerList.firstOrNull()?.first?.imageRes ?: R.drawable.pembe_lilyum
             Image(
                 painter = painterResource(id = ilkCicekGorseli),
                 contentDescription = null,

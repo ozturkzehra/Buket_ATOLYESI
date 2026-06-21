@@ -32,10 +32,44 @@ import androidx.navigation.compose.rememberNavController
 fun MainScreen(navController: NavController, sepetViewModel: SepetViewModel = viewModel()) {
     val workshopSteps = listOf("Ana Çiçek", "Yan Çiçek")
     var selectedCategory by remember { mutableStateOf("Ana Çiçek") }
-
-    // Seçilen Çiçeklerin Adetlerini harita (Map) yapısında tutuyoruz: FlowerId -> Adet
     var secilenCicekAdetleri by remember { mutableStateOf(mapOf<Int, Int>()) }
     val context = LocalContext.current
+
+    // Bilgi kutusunun durumunu takip etmek için state'ler ℹ️
+    var secilenBilgiCicegi by remember { mutableStateOf<Flower?>(null) }
+    var showDialog by remember { mutableStateOf(false) }
+
+    // Çiçek Anlamını Gösteren Bilgi Kutusu (Pop-up)
+    if (showDialog && secilenBilgiCicegi != null) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = {
+                Text(
+                    text = "${secilenBilgiCicegi!!.name} Ne Anlama Gelir?",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+            },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(text = secilenBilgiCicegi!!.meaning, fontSize = 15.sp)
+                    Text(
+                        text = "Öne Çıkan Duygu: ${secilenBilgiCicegi!!.emotion}",
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text("Anladım", fontWeight = FontWeight.Bold)
+                }
+            },
+            shape = RoundedCornerShape(16.dp),
+            containerColor = Color.White
+        )
+    }
 
     Scaffold(
         containerColor = Color.Transparent,
@@ -100,8 +134,34 @@ fun MainScreen(navController: NavController, sepetViewModel: SepetViewModel = vi
                                 modifier = Modifier.size(70.dp).clip(RoundedCornerShape(12.dp)),
                                 contentScale = ContentScale.Crop
                             )
+
                             Column(modifier = Modifier.weight(1f).padding(horizontal = 12.dp)) {
-                                Text(text = item.name, style = MaterialTheme.typography.titleLarge, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                                // Çiçek Adı ve Bilgi Butonu Yan Yana Getirildi ℹ️
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                                ) {
+                                    Text(
+                                        text = item.name,
+                                        style = MaterialTheme.typography.titleLarge,
+                                        fontSize = 16.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    IconButton(
+                                        onClick = {
+                                            secilenBilgiCicegi = item
+                                            showDialog = true
+                                        },
+                                        modifier = Modifier.size(20.dp)
+                                    ) {
+                                        Icon(
+                                            Icons.Default.Info,
+                                            contentDescription = "Anlamı",
+                                            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
+                                            modifier = Modifier.size(16.dp)
+                                        )
+                                    }
+                                }
                                 Text(text = item.price, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.secondary)
                             }
 
@@ -142,7 +202,6 @@ fun MainScreen(navController: NavController, sepetViewModel: SepetViewModel = vi
                     }
 
                     if (secilenListesi.isNotEmpty()) {
-                        // Birleşik ismiyle çağırıyoruz, derleme hatası vermez
                         sepetViewModel.tasarimCicekleriniSetEt(secilenListesi)
                         navController.navigate("flowerDetail/studio")
                     } else {
