@@ -1,45 +1,72 @@
 package com.example.canimuygulamam
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.canimuygulamam.databinding.ActivityMainBinding
-import com.google.android.material.tabs.TabLayout
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContent {
+            val customColorScheme = lightColorScheme(
+                primary = colorResource(id = R.color.evergreen),
+                surface = colorResource(id = R.color.mist),
+                onSurface = colorResource(id = R.color.evergreen),
+                secondary = colorResource(id = R.color.sage),
+                onPrimary = colorResource(id = R.color.white)
+            )
 
-        setupTabs()
-    }
-
-    private fun setupTabs() {
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Ana Sayfa"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Çiçekler"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("🛒 Sepet"))
-
-        // Ana sayfada olduğumuz için 0. sekme seçili kalsın
-        binding.tabLayout.getTabAt(0)?.select()
-
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.position) {
-                    1 -> {
-                        val intent = Intent(this@MainActivity, CiceklerActivity::class.java)
-                        startActivity(intent)
-                    }
-                    2 -> {
-                        val intent = Intent(this@MainActivity, SepetActivity::class.java)
-                        startActivity(intent)
+            MaterialTheme(
+                colorScheme = customColorScheme,
+                typography = AppTypography
+            ) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    // Tüm uygulamanın arka planı son.jpg olacak
+                    Image(
+                        painter = painterResource(id = R.drawable.son),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+                    
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = androidx.compose.ui.graphics.Color.Transparent // Arka planın görünmesi için şeffaf
+                    ) {
+                        AppNavigation()
                     }
                 }
             }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
+        }
+    }
+}
+
+@Composable
+fun AppNavigation() {
+    val navController = rememberNavController()
+    NavHost(navController, startDestination = "login") {
+        composable("login") { LoginScreen(navController) }
+        composable("signup") { SignupScreen(navController) }
+        composable("main") { MainScreen(navController) }
+        composable("sepet") { SepetScreen(navController) }
+        composable("profil") { ProfileScreen(navController) }
+        composable("flowerDetail/{flowerId}") { backStackEntry ->
+            val flowerId = backStackEntry.arguments?.getString("flowerId")
+            FlowerDetailScreen(navController, flowerId)
+        }
     }
 }
