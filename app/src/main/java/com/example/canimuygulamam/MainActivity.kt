@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -35,7 +36,6 @@ class MainActivity : ComponentActivity() {
                 typography = AppTypography
             ) {
                 Box(modifier = Modifier.fillMaxSize()) {
-                    // Tüm uygulamanın arka planı son.jpg olacak
                     Image(
                         painter = painterResource(id = R.drawable.son),
                         contentDescription = null,
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     
                     Surface(
                         modifier = Modifier.fillMaxSize(),
-                        color = androidx.compose.ui.graphics.Color.Transparent // Arka planın görünmesi için şeffaf
+                        color = androidx.compose.ui.graphics.Color.Transparent
                     ) {
                         AppNavigation()
                     }
@@ -58,11 +58,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
+    // Ortak sepet yönetimi için tek bir ViewModel
+    val sepetViewModel: SepetViewModel = viewModel()
+
     NavHost(navController, startDestination = "login") {
         composable("login") { LoginScreen(navController) }
         composable("signup") { SignupScreen(navController) }
-        composable("main") { MainScreen(navController) }
-        composable("sepet") { SepetScreen(navController) }
+        composable("main") { MainScreen(navController, sepetViewModel) }
+        composable("sepet") { SepetScreen(navController, sepetViewModel) }
         composable("profil") { ProfileScreen(navController) }
         composable("flowerDetail/{flowerId}") { backStackEntry ->
             val flowerId = backStackEntry.arguments?.getString("flowerId")
