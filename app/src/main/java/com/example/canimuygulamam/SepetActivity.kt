@@ -35,7 +35,7 @@ class SepetActivity : AppCompatActivity() {
 
     // =========================================================================
     // Apı keyimi ekledim
-    private val GEMINI_API_KEY = "AQ.Ab8RN6K6xXiAhSX6hkVvQtJwZTvyoTK5V8WTyfXNeCn66AUHNg"
+    private val GEMINI_API_KEY = "AQ.Ab8RN6LmheXkuoUAN_ulqpczrtbG4OaLhx9ifdphBapfPIaGfw"
     // =========================================================================
 
     private lateinit var adapter: SepetAdapter
@@ -185,7 +185,7 @@ Türkçe yaz, samimi ve şiirsel bir dil kullan.
 
     private fun callGeminiAPI(prompt: String): String {
         // En kararlı v1 ana sürüm endpoint'ine yönlendirildi
-        val url = URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AQ.Ab8RN6K6xXiAhSX6hkVvQtJwZTvyoTK5V8WTyfXNeCn66AUHNg")
+        val url = URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=AQ.Ab8RN6LmheXkuoUAN_ulqpczrtbG4OaLhx9ifdphBapfPIaGfw")
         val conn = url.openConnection() as HttpURLConnection
         conn.requestMethod = "POST"
         conn.setRequestProperty("Content-Type", "application/json")
