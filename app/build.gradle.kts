@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -21,6 +22,8 @@ android {
 
     buildFeatures {
         compose = true
+        // GeminiService içindeki şifreyi okuyabilmek için BuildConfig'i aktif ettik 🛠️
+        buildConfig = true
     }
 
     buildTypes {
@@ -47,7 +50,7 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.activity:activity-compose:1.9.3")
-    
+
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-analytics")
@@ -79,6 +82,9 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    // Gemini API - Eksik olan kütüphaneyi buraya ekledi
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 
     // Core
     implementation("androidx.core:core-ktx:1.13.1")

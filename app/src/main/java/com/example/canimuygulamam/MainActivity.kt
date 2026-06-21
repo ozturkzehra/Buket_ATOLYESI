@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
-                    
+
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = androidx.compose.ui.graphics.Color.Transparent
@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
-    // Ortak sepet yönetimi için tek bir ViewModel
+    // Ortak sepet yönetimi için tek bir ViewModel örneği (Instance)
     val sepetViewModel: SepetViewModel = viewModel()
 
     NavHost(navController, startDestination = "login") {
@@ -67,9 +67,13 @@ fun AppNavigation() {
         composable("main") { MainScreen(navController, sepetViewModel) }
         composable("sepet") { SepetScreen(navController, sepetViewModel) }
         composable("profil") { ProfileScreen(navController) }
-        composable("flowerDetail/{flowerId}") { backStackEntry ->
-            val flowerId = backStackEntry.arguments?.getString("flowerId")
-            FlowerDetailScreen(navController, flowerId)
+
+        // Yeni Çoklu Çiçek ve Tasarım Stüdyosu Rotası (Hatalı kısım düzeltildi 🛠️)
+        composable("flowerDetail/studio") {
+            FlowerDetailScreen(
+                navController = navController,
+                sepetViewModel = sepetViewModel
+            )
         }
     }
 }
