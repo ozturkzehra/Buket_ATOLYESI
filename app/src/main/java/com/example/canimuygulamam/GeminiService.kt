@@ -13,7 +13,7 @@ import java.net.URL
 object GeminiService {
 
     // Diğer sayfada çalışan, senin o çalışan gerçek API anahtarın
-    private const val GIZLI_ANAHTAR = "AQ.Ab8RN6LmheXkuoUAN_ulqpczrtbG4OaLhx9ifdphBapfPIaGfw"
+    private const val GIZLI_ANAHTAR = "AQ.Ab8RN6Klpx8-mRet5KL7zW0Hz74Mo7gslGaXuukkD2e1LEYK4Q"
 
     suspend fun generateFlowerNote(cicekIsimleri: String, duygu: String): String = withContext(Dispatchers.IO) {
         val prompt = """
