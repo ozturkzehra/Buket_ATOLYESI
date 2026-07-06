@@ -1,6 +1,7 @@
-package com.example.canimuygulamam
+package com.example.canimuygulamam.data
 
 import androidx.compose.ui.graphics.Color
+import com.example.canimuygulamam.R
 
 data class Flower(
     val id: Int,

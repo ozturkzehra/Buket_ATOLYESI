@@ -1,4 +1,4 @@
-package com.example.canimuygulamam // Burayı bu şekilde düzeltin
+package com.example.canimuygulamam.ui.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -37,4 +37,3 @@ class LoginViewModel : ViewModel() {//telefon dondugunda verilerimin silinmemesi
     }
 
 }
-

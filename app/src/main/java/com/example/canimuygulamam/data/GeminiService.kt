@@ -1,5 +1,6 @@
-package com.example.canimuygulamam
+package com.example.canimuygulamam.data
 
+import com.example.canimuygulamam.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
@@ -72,9 +73,19 @@ object GeminiService {
                 val responseCode = conn.responseCode
 
                 val responseText = if (responseCode in 200..299) {
-                    BufferedReader(InputStreamReader(conn.inputStream, "UTF-8")).use { it.readText() }
+                    BufferedReader(
+                        InputStreamReader(
+                            conn.inputStream,
+                            "UTF-8"
+                        )
+                    ).use { it.readText() }
                 } else {
-                    BufferedReader(InputStreamReader(conn.errorStream, "UTF-8")).use { it.readText() }
+                    BufferedReader(
+                        InputStreamReader(
+                            conn.errorStream,
+                            "UTF-8"
+                        )
+                    ).use { it.readText() }
                 }
 
                 if (responseCode !in 200..299) {

@@ -11,6 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -18,6 +19,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.canimuygulamam.ui.theme.AppTypography
+import com.example.canimuygulamam.ui.profile.ProfileScreen
+import com.example.canimuygulamam.ui.auth.LoginScreen
+import com.example.canimuygulamam.ui.auth.SignupScreen
+import com.example.canimuygulamam.ui.home.FlowerDetailScreen
+import com.example.canimuygulamam.ui.home.MainScreen
+import com.example.canimuygulamam.ui.sepet.SepetScreen
+import com.example.canimuygulamam.ui.sepet.SepetViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +54,7 @@ class MainActivity : ComponentActivity() {
 
                     Surface(
                         modifier = Modifier.fillMaxSize(),
-                        color = androidx.compose.ui.graphics.Color.Transparent
+                        color = Color.Transparent
                     ) {
                         AppNavigation()
                     }

@@ -1,7 +1,6 @@
-package com.example.canimuygulamam
+package com.example.canimuygulamam.ui.home
 
 import android.widget.Toast
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,7 +8,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -32,6 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.canimuygulamam.data.GeminiService
+import com.example.canimuygulamam.data.MaterialColor
+import com.example.canimuygulamam.ui.sepet.SepetViewModel
 import kotlinx.coroutines.launch // Hata almamak için coroutine importunu ekledik
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -236,9 +237,18 @@ fun FlowerDetailScreen(
             // 6. Sepete Ekleme Tetikleyicisi
             Button(
                 onClick = {
-                    val finalKarton = MaterialColor("Özel Karton", Color.hsv(kartonHue, kartonSat, kartonVal), "0 TL")
-                    val finalTul = MaterialColor("Özel Tül", Color.hsv(tulHue, tulSat, tulVal), "0 TL")
-                    val finalKurdele = MaterialColor("Özel Kurdele", Color.hsv(kurdeleHue, kurdeleSat, kurdeleVal), "0 TL")
+                    val finalKarton = MaterialColor(
+                        "Özel Karton",
+                        Color.hsv(kartonHue, kartonSat, kartonVal),
+                        "0 TL"
+                    )
+                    val finalTul =
+                        MaterialColor("Özel Tül", Color.hsv(tulHue, tulSat, tulVal), "0 TL")
+                    val finalKurdele = MaterialColor(
+                        "Özel Kurdele",
+                        Color.hsv(kurdeleHue, kurdeleSat, kurdeleVal),
+                        "0 TL"
+                    )
 
                     sepetViewModel.sepeteEkle(
                         flowers = secilenCicekler,

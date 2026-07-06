@@ -1,4 +1,4 @@
-package com.example.canimuygulamam
+package com.example.canimuygulamam.ui.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,7 +31,7 @@ class SignupViewModel : ViewModel() {
             onError("Şifreler eşleşmiyor")
             return
         }
-        
+
         if (_password.value.length < 6) {
             onError("Şifre en az 6 karakter olmalıdır")
             return

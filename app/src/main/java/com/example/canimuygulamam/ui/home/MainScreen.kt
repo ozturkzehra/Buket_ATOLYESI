@@ -1,4 +1,4 @@
-package com.example.canimuygulamam
+package com.example.canimuygulamam.ui.home
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -26,6 +26,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.canimuygulamam.data.Flower
+import com.example.canimuygulamam.data.flowerList
+import com.example.canimuygulamam.ui.theme.AppTypography
+import com.example.canimuygulamam.ui.sepet.SepetViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

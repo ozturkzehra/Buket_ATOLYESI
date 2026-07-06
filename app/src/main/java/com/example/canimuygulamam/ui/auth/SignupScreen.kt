@@ -1,4 +1,4 @@
-package com.example.canimuygulamam
+package com.example.canimuygulamam.ui.auth
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -15,25 +15,26 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.canimuygulamam.ui.theme.AppTypography
 
 @Composable
-fun LoginScreen(navController: NavController, viewModel: LoginViewModel = viewModel()) {
+fun SignupScreen(navController: NavController, viewModel: SignupViewModel = viewModel()) {
     val email by viewModel.email.collectAsState()
     val password by viewModel.password.collectAsState()
+    val confirmPassword by viewModel.confirmPassword.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val context = LocalContext.current
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            // Arka planın okunabilirliğini artırmak için çok hafif bir katman
             .background(Color.White.copy(alpha = 0.2f))
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Buket Diyarı",
+            text = "Kayıt Ol",
             style = MaterialTheme.typography.headlineLarge,
             color = MaterialTheme.colorScheme.primary
         )
@@ -67,15 +68,29 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = viewMo
             )
         )
 
+        Spacer(modifier = Modifier.height(8.dp))
+
+        OutlinedTextField(
+            value = confirmPassword,
+            onValueChange = { viewModel.onConfirmPasswordChange(it) },
+            label = { Text("Şifre Tekrar") },
+            visualTransformation = PasswordVisualTransformation(),
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color.White.copy(alpha = 0.7f),
+                unfocusedContainerColor = Color.White.copy(alpha = 0.5f)
+            )
+        )
+
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
             onClick = {
-                viewModel.login(
+                viewModel.signup(
                     onSuccess = {
-                        navController.navigate("main") {
-                            popUpTo("login") { inclusive = true }
-                        }
+                        Toast.makeText(context, "Kayıt başarılı! Giriş yapabilirsiniz.", Toast.LENGTH_LONG).show()
+                        navController.popBackStack()
                     },
                     onError = { mesaj ->
                         Toast.makeText(context, mesaj, Toast.LENGTH_LONG).show()
@@ -91,29 +106,28 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = viewMo
                     color = MaterialTheme.colorScheme.onPrimary
                 )
             } else {
-                Text("Giriş Yap")
+                Text("Kayıt Ol")
             }
         }
 
-        TextButton(onClick = { navController.navigate("signup") }) {
-            Text("Hesabın yok mu? Kayıt Ol", color = MaterialTheme.colorScheme.primary)
+        TextButton(onClick = { navController.popBackStack() }) {
+            Text("Zaten hesabın var mı? Giriş Yap", color = MaterialTheme.colorScheme.primary)
         }
     }
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun LoginScreenPreview() {
-    // Uygulama genel renklerini burada tanımlayarak önizlemede görmeni sağlıyoruz
+fun SignupScreenPreview() {
     val customColorScheme = lightColorScheme(
-        primary = Color(0xFF3D4835), // Evergreen
-        surface = Color(0xFFF4F3F1)  // Mist
+        primary = Color(0xFF3D4835),
+        surface = Color(0xFFF4F3F1)
     )
 
     MaterialTheme(
         colorScheme = customColorScheme,
         typography = AppTypography
     ) {
-        LoginScreen(navController = rememberNavController())
+        SignupScreen(navController = rememberNavController())
     }
 }
